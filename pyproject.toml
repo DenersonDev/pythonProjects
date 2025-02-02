@@ -1,0 +1,14 @@
+[project]
+name = "pythonprojects"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=2.2.3",
+    "plotly>=6.0.0",
+    "prophet>=1.1.6",
+    "requests>=2.32.3",
+    "streamlit>=1.41.1",
+    "yfinance>=0.2.52",
+]
