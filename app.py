@@ -57,6 +57,7 @@ def trata_dados(df, variacao_ent=0, variacao_saida=0):
         (df2["entrou"] == True) & (df2["saida"] == False)
     ].sum()
     preco_entrada = df2['Close'].tail(1) - (df2['Close'].tail(1)*mediavar)
+    preco_saida = preco_entrada.iloc[0] + (preco_entrada.iloc[0]*medialucro)
     
     dict_valores['mediavar'] = mediavar
     dict_valores['mediavlr'] = mediavlr
@@ -67,9 +68,8 @@ def trata_dados(df, variacao_ent=0, variacao_saida=0):
     dict_valores['lucroTotal'] = lucroTotal
     dict_valores['prejuizototal'] = prejuizoTotal
     dict_valores['final'] = lucroTotal - prejuizoTotal
-    dict_valores['entrada'] = round(preco_entrada,2)
-    dict_valores['saida'] = round(preco_entrada + (preco_entrada*medialucro))
-    print(dict_valores['saida'])
+    dict_valores['entrada'] = round(preco_entrada.iloc[0],2)
+    dict_valores['saida'] = round(preco_saida, 2)
 
 if acao == "":
     st.write("nenhum valor encontrado para esta ação")
